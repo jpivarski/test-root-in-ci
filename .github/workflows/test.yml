@@ -3,6 +3,9 @@ on: [push]
 jobs:
   this-is-a-test:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: "bash -l {0}"
     steps:
       - name: Install ROOT via Conda
         uses: mamba-org/setup-micromamba@v1
