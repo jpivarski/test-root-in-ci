@@ -1,0 +1,15 @@
+name: Test ROOT in CI
+on: [push]
+jobs:
+  this-is-a-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install ROOT via Conda
+        uses: mamba-org/setup-micromamba@v1
+        with:
+          create-args: >-
+            python=3.11
+            root
+      - name: Verify that ROOT is installed
+        run: >-
+          python -c "import ROOT; print(ROOT.__version__); print(ROOT.TH1F('meow', '', 10, -5, 5))"
